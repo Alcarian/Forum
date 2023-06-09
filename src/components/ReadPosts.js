@@ -16,7 +16,7 @@ export default function ReadPosts({ userId }) {
   return (
     <div className="thread-container">
       {post
-        .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+        // .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
         .map((post) => (
           <Posts key={post._id} post={post} userId={userId} />
         ))}
