@@ -7,7 +7,7 @@ export default function ReadPosts({ userId }) {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/post/`, {
+      .get(`${process.env.REACT_APP_API_URL}/`, {
         withCredentials: true,
       })
       .then((res) => setPost(res.data));
