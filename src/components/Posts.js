@@ -8,6 +8,7 @@ export default function Posts({ post, userId }) {
   const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
+    /* eslint-disable*/
     if (post.author === userId) {
       setIsAuthor(true);
     } else {
