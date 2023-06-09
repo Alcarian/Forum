@@ -18,9 +18,15 @@ export default function Posts({ post, userId }) {
 
   const handleEdit = () => {
     if (newMessage) {
-      axios.put(`${process.env.REACT_APP_API_URL}/post/` + post._id, {
-        message: newMessage,
-      });
+      axios.put(
+        `${process.env.REACT_APP_API_URL}/post/` + post._id,
+        {
+          message: newMessage,
+        },
+        {
+          withCredentials: true,
+        }
+      );
     }
   };
 

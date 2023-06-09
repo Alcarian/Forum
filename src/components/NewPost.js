@@ -7,10 +7,16 @@ export default function NewPost(userId) {
   const handleForm = (e) => {
     e.preventDefault();
 
-    axios.post(`${process.env.REACT_APP_API_URL}/post/`, {
-      message,
-      author: userId,
-    });
+    axios.post(
+      `${process.env.REACT_APP_API_URL}/post/`,
+      {
+        message,
+        author: userId,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     setMessage("");
   };
 

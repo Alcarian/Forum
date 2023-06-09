@@ -6,9 +6,9 @@ export default function App() {
   const [userId, setUserId] = useState("");
 
   return (
-    <div>
+    <div className="app-container">
       <h1>Le forum d'Alcarian</h1>
-      <div>
+      <div className="login">
         <h3>Bonjour</h3>
         <input
           type="text"
