@@ -3,7 +3,7 @@ import axios from "axios";
 
 const DeletePost = ({ postId }) => {
   const handleDelete = () => {
-    axios.delete(`${process.env.REACT_APP_API_URL}/post/:${postId}`, {
+    axios.delete(`${process.env.REACT_APP_API_URL}/post/${postId}`, {
       withCredentials: true,
     });
   };
