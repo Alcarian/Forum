@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-export default function NewPost(userId) {
+export default function NewPost({ userId }) {
   const [message, setMessage] = useState("");
 
   const handleForm = (e) => {
@@ -19,8 +19,6 @@ export default function NewPost(userId) {
     );
     setMessage("");
   };
-
-  console.log(message);
 
   return (
     <form onSubmit={(e) => handleForm(e)} className="new-post-container">

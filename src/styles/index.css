@@ -36,7 +36,7 @@ body {
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: rgb(3, 218, 81);
+  color: rgb(194, 129, 8);
   margin-left: 10px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -105,7 +105,7 @@ input[type="submit"]:hover {
 .card-header h3 {
   letter-spacing: 1px;
   font-size: 1.4rem;
-  color: rgb(3, 218, 81);
+  color: rgb(194, 129, 8);
 }
 
 .card-header p {

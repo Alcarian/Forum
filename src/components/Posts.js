@@ -19,7 +19,7 @@ export default function Posts({ post, userId }) {
   const handleEdit = () => {
     if (newMessage) {
       axios.put(
-        `${process.env.REACT_APP_API_URL}/post/` + post._id,
+        `${process.env.REACT_APP_API_URL}/post/` + post.id,
         {
           message: newMessage,
         },
@@ -77,7 +77,7 @@ export default function Posts({ post, userId }) {
             >
               &#10000;
             </span>
-            <DeletePost postId={post._id} />
+            <DeletePost postId={post.id} />
           </div>
         )}
       </div>
