@@ -17,7 +17,7 @@ export default function ReadPosts({ userId }) {
 
   return (
     <div className="thread-container">
-      {post
+      {post[0]
         .sort((a, b) => {
           if (a.createdDate && b.createdDate) {
             return b.createdDate.localeCompare(a.createdDate);
@@ -25,7 +25,7 @@ export default function ReadPosts({ userId }) {
           return 0;
         })
         .map((post) => (
-          <Posts key={post.id} post={post[0]} userId={userId} />
+          <Posts key={post.id} post={post} userId={userId} />
         ))}
     </div>
   );
