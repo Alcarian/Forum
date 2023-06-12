@@ -45,7 +45,7 @@ export default function Posts({ post, userId }) {
     <div className="card">
       <div className="card-header">
         <h3>{post.author}</h3>
-        <p>posté le {dateFormater(post.createdAt)}</p>
+        <p>posté le {dateFormater(post.createdDate)}</p>
       </div>
       {isEdit ? (
         <div className="edit-container">

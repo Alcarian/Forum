@@ -20,6 +20,8 @@ export default function NewPost(userId) {
     setMessage("");
   };
 
+  console.log(message);
+
   return (
     <form onSubmit={(e) => handleForm(e)} className="new-post-container">
       <textarea

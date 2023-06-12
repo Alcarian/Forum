@@ -5,6 +5,8 @@ import Posts from "./Posts";
 export default function ReadPosts({ userId }) {
   const [post, setPost] = useState([]);
 
+  console.log(post);
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/post/`, {
@@ -16,9 +18,14 @@ export default function ReadPosts({ userId }) {
   return (
     <div className="thread-container">
       {post
-        // .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+        .sort((a, b) => {
+          if (a.createdDate && b.createdDate) {
+            return b.createdDate.localeCompare(a.createdDate);
+          }
+          return 0;
+        })
         .map((post) => (
-          <Posts key={post._id} post={post} userId={userId} />
+          <Posts key={post.id} post={post[0]} userId={userId} />
         ))}
     </div>
   );
