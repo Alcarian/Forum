@@ -5,15 +5,16 @@ import Posts from "./Posts";
 export default function ReadPosts({ userId }) {
   const [post, setPost] = useState([]);
 
-  useEffect(() => {
+  function getData() {
     axios
       .get(`${process.env.REACT_APP_API_URL}/post/`, {
         withCredentials: true,
       })
       .then((res) => setPost(res.data[0]));
-  }, []);
-
-  console.log(post);
+  }
+  useEffect(() => {
+    getData();
+  }, [post]);
 
   return (
     <div className="thread-container">
@@ -25,7 +26,7 @@ export default function ReadPosts({ userId }) {
           return 0;
         })
         .map((post) => (
-          <Posts key={post.id} post={post} userId={userId} />
+          <Posts key={post.id} post={post} userId={userId} getData={getData} />
         ))}
     </div>
   );

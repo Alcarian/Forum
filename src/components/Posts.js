@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DeletePost from "./DeletePosts";
 
-export default function Posts({ post, userId }) {
+export default function Posts({ post, userId, getData }) {
   const [isAuthor, setIsAuthor] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [newMessage, setNewMessage] = useState("");
+  const [isDelete, setIsDelete] = useState(false);
 
   useEffect(() => {
     /* eslint-disable*/
@@ -42,6 +43,17 @@ export default function Posts({ post, userId }) {
     });
   };
 
+  function handleClickButton() {
+    setIsDelete(true);
+  }
+
+  useEffect(() => {
+    if (isDelete) {
+      setIsDelete(false);
+      getData();
+    }
+  }, [isDelete, getData]);
+
   return (
     <div className="card">
       <div className="card-header">
@@ -58,6 +70,7 @@ export default function Posts({ post, userId }) {
             onClick={() => {
               handleEdit();
               setIsEdit(false);
+              handleClickButton();
             }}
           >
             Valider édition
@@ -78,7 +91,7 @@ export default function Posts({ post, userId }) {
             >
               &#10000;
             </span>
-            <DeletePost postId={post.id} />
+            <DeletePost postId={post.id} getData={getData} />
           </div>
         )}
       </div>
