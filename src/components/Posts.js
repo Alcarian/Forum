@@ -22,6 +22,7 @@ export default function Posts({ post, userId }) {
         `${process.env.REACT_APP_API_URL}/post/` + post.id,
         {
           message: newMessage,
+          userId,
         },
         {
           withCredentials: true,

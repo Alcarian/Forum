@@ -13,6 +13,12 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
+h1 {
+  font-size: 3rem;
+  color: rgb(184, 70, 3);
+  text-align: center;
+  margin-bottom: 20px;
+}
 
 .login,
 .new-post-container,
@@ -110,6 +116,7 @@ input[type="submit"]:hover {
 
 .card-header p {
   font-style: italic;
+  text-align: right;
 }
 
 .card textarea {
