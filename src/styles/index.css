@@ -20,13 +20,69 @@ h1 {
   margin-bottom: 20px;
 }
 
+.authentification {
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-content,
+.login-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-content h2,
+.login-content h2 {
+  color: brown;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.register-content input,
+.login-content input {
+  padding: 5px;
+  color: rgba(248, 240, 240, 0.692);
+  background: transparent;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border: 1px solid rgb(95, 86, 86);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.register-content form,
+.login-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-content button,
+.login-content button {
+  border: 1px solid rgb(95, 86, 86);
+  color: rgba(248, 240, 240, 0.692);
+  background: transparent;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.register-content button:hover,
+.login-content button:hover {
+  transform: translateX(3px);
+  background: rgb(97, 97, 97);
+  color: white;
+}
+
 .login,
 .new-post-container,
 .thread-container {
   box-shadow: 0 0 0 black;
 }
 
-.login {
+/* .login {
   display: flex;
   background: rgb(19, 19, 19);
   border-radius: 10px;
@@ -47,7 +103,7 @@ h1 {
   font-weight: bold;
   letter-spacing: 1px;
   outline: none;
-}
+} */
 
 .new-post-container {
   background: rgb(19, 19, 19);
