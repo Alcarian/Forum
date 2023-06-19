@@ -12,12 +12,31 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
 }
 h1 {
   font-size: 3rem;
   color: rgb(184, 70, 3);
   text-align: center;
   margin-bottom: 20px;
+}
+.logout button {
+  position: absolute;
+  top: 3.5%;
+  right: 1%;
+  border: 1px solid rgb(95, 86, 86);
+  color: rgba(211, 9, 9, 0.692);
+  background: transparent;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.logout button:hover {
+  transform: translateX(3px);
+  background: rgb(7, 7, 7);
 }
 
 .authentification {
@@ -82,7 +101,7 @@ h1 {
   box-shadow: 0 0 0 black;
 }
 
-/* .login {
+.login {
   display: flex;
   background: rgb(19, 19, 19);
   border-radius: 10px;
@@ -103,7 +122,14 @@ h1 {
   font-weight: bold;
   letter-spacing: 1px;
   outline: none;
-} */
+}
+
+.disconnected,
+.connected {
+  text-align: right;
+  margin-bottom: 10px;
+  margin-right: 15px;
+}
 
 .new-post-container {
   background: rgb(19, 19, 19);
