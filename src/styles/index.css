@@ -43,7 +43,7 @@ h1 {
 
 @media screen and (max-width: 497px) {
   .logout button {
-    top: 15%;
+    top: 10%;
     right: 10%;
   }
 }
