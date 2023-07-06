@@ -42,16 +42,18 @@ export default function NewPost({ pseudo }) {
   };
 
   return (
-    <form onSubmit={(e) => handleForm(e)} className="new-post-container">
-      <textarea
-        placeholder="Quoi de neuf ?"
-        onChange={(e) => setMessage(e.target.value)}
-        value={message}
-      ></textarea>
-      <input type="submit" value="Envoyer" />
+    <div className="new-post">
+      <form onSubmit={(e) => handleForm(e)} className="new-post-container">
+        <textarea
+          placeholder="Quoi de neuf ?"
+          onChange={(e) => setMessage(e.target.value)}
+          value={message}
+        ></textarea>
+        <input type="submit" value="Envoyer" />
+      </form>
       {errorMessage && isVisible && (
         <p className="error-message">{errorMessage}</p>
       )}
-    </form>
+    </div>
   );
 }
