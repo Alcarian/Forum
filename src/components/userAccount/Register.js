@@ -41,7 +41,6 @@ export default function Register() {
           password,
         }
       );
-      console.log(response);
 
       if ((response.status = 201)) {
         setErrorMessage(response.data.message);
