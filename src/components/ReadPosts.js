@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Posts from "./Posts";
 
-export default function ReadPosts({ userId }) {
+export default function ReadPosts({ pseudo }) {
   const [post, setPost] = useState([]);
 
   function getData() {
@@ -26,7 +26,7 @@ export default function ReadPosts({ userId }) {
           return 0;
         })
         .map((post) => (
-          <Posts key={post.id} post={post} userId={userId} getData={getData} />
+          <Posts key={post.id} post={post} pseudo={pseudo} getData={getData} />
         ))}
     </div>
   );

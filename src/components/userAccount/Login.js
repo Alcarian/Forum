@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import LogContext from "../store/LogContext";
 
 export default function Login({ onLogin }) {
-  const [pseudo, setPseudo] = useState("");
+  const pseudoInputRef = useRef(null);
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const logCtx = useContext(LogContext);
@@ -27,19 +27,21 @@ export default function Login({ onLogin }) {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    const enteredPseudo = pseudoInputRef.current.value;
+
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/post/login`,
         {
-          pseudo,
+          pseudo: enteredPseudo,
           password,
         }
       );
 
       if (response.status === 200) {
         setErrorMessage(response.data.message);
-        setPseudo("");
-        setPassword("");
+
+        localStorage.setItem("pseudo", enteredPseudo);
         onLogin();
       } else {
         setErrorMessage(response.data.message);
@@ -56,12 +58,7 @@ export default function Login({ onLogin }) {
     <div className="login-content">
       <h2>Se connecter</h2>
       <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Pseudo"
-          value={pseudo}
-          onChange={(e) => setPseudo(e.target.value)}
-        />
+        <input type="text" placeholder="Pseudo" ref={pseudoInputRef} />
         <input
           type="password"
           placeholder="Mot de passe"

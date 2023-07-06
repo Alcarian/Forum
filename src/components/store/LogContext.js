@@ -1,8 +1,7 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const defaultValue = {
-  pseudoStorage: "",
-  passwordStorage: null,
+  pseudo: "",
   userIsLoggedIn: false,
   login: () => {},
   logout: () => {},
@@ -10,45 +9,36 @@ const defaultValue = {
 
 const LogContext = createContext(defaultValue);
 
+// Le context provider
 export const LogContextProvider = (props) => {
-  const [pseudoStorage, setPseudoStorage] = useState("");
-  const [passwordStorage, setPasswordStorage] = useState("");
+  // stockage du pseudo
+  const [pseudo, setPseudo] = useState("");
 
   useEffect(() => {
+    // Récupérer la valeur du pseudo depuis le local storage
     const storedPseudo = localStorage.getItem("pseudo");
-    const storedPassword = localStorage.getItem("password");
-    setPseudoStorage(storedPseudo);
-    setPasswordStorage(storedPassword);
+    if (storedPseudo) {
+      setPseudo(storedPseudo);
+    }
   }, []);
 
-  console.log("***pseudostorage, passwordstorage****");
-  console.log(pseudoStorage, passwordStorage);
-
-  useEffect(() => {
-    if (pseudoStorage && passwordStorage) {
-      localStorage.setItem("pseudo", pseudoStorage);
-      localStorage.setItem("password", passwordStorage);
-    } else {
-      localStorage.removeItem("pseudo");
-      localStorage.removeItem("password");
-    }
-  }, [pseudoStorage, passwordStorage]);
-
-  const loginHandler = (pseudo, password) => {
-    setPseudoStorage(pseudo);
-    setPasswordStorage(password);
+  // Fonction pour mettre à jour le pseudo dans le state
+  const loginHandler = (pseudo) => {
+    setPseudo(pseudo);
   };
 
+  // faire passer le pseudo a null pour se déconnecter
   const logOutHandler = () => {
-    setPseudoStorage("");
-    setPasswordStorage("");
+    setPseudo(null);
+    // supprimer la donnée du local storage
+    localStorage.clear();
   };
 
-  const userIsLoggedIn = !!pseudoStorage && pseudoStorage !== "";
+  // Présence pseudo
+  const userIsLoggedIn = !!pseudo;
 
   const contextValue = {
-    pseudoStorage: pseudoStorage,
-    passwordStorage: passwordStorage,
+    pseudo: pseudo,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logOutHandler,

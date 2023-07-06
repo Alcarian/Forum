@@ -18,12 +18,12 @@ h1 {
   font-size: 3rem;
   color: rgb(184, 70, 3);
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 .logout button {
   position: absolute;
   top: 3.5%;
-  right: 1%;
+  right: 3%;
   border: 1px solid rgb(95, 86, 86);
   color: rgba(211, 9, 9, 0.692);
   background: transparent;
@@ -32,6 +32,20 @@ h1 {
   padding: 8px;
   cursor: pointer;
   margin-bottom: 15px;
+}
+
+@media screen and (max-width: 800px) {
+  .logout button {
+    top: 12%;
+    right: 5%;
+  }
+}
+
+@media screen and (max-width: 497px) {
+  .logout button {
+    top: 15%;
+    right: 10%;
+  }
 }
 
 .logout button:hover {
@@ -112,7 +126,7 @@ h1 {
   font-size: 1.5rem;
 }
 
-.login input {
+.login h2 {
   width: 200px;
   font-size: 1.5rem;
   background: none;

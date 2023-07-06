@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DeletePost from "./DeletePosts";
 
-export default function Posts({ post, userId, getData }) {
+export default function Posts({ post, pseudo, getData }) {
   const [isAuthor, setIsAuthor] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [newMessage, setNewMessage] = useState("");
@@ -10,12 +10,12 @@ export default function Posts({ post, userId, getData }) {
 
   useEffect(() => {
     /* eslint-disable*/
-    if (post.author === userId) {
+    if (post.author === pseudo) {
       setIsAuthor(true);
     } else {
       setIsAuthor(false);
     }
-  }, [userId]);
+  }, [pseudo]);
 
   const handleEdit = () => {
     if (newMessage) {
@@ -23,7 +23,7 @@ export default function Posts({ post, userId, getData }) {
         `${process.env.REACT_APP_API_URL}/post/` + post.id,
         {
           message: newMessage,
-          userId,
+          pseudo,
         },
         {
           withCredentials: true,

@@ -10,7 +10,9 @@ export default function Logout() {
 
   return (
     <div className="logout">
-      <button onClick={handleLogout}>Se déconnecter</button>
+      <form onSubmit={handleLogout}>
+        <button type="submit">Se déconnecter</button>
+      </form>
     </div>
   );
 }

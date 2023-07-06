@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-export default function NewPost({ userId }) {
+export default function NewPost({ pseudo }) {
   const [message, setMessage] = useState("");
 
   const handleForm = (e) => {
@@ -11,7 +11,7 @@ export default function NewPost({ userId }) {
       `${process.env.REACT_APP_API_URL}/post/`,
       {
         message,
-        author: userId,
+        author: pseudo,
       },
       {
         withCredentials: true,

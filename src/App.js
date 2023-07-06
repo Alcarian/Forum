@@ -7,16 +7,16 @@ import Logout from "./components/userAccount/Logout";
 import LogContext from "../src/components/store/LogContext";
 
 export default function App() {
-  const [userId, setUserId] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const logCtx = useContext(LogContext);
-  const pseudo = logCtx.pseudoStorage;
 
   const handleLogin = (password) => {
     setIsLoggedIn(true);
-    logCtx.login(userId, password);
+    logCtx.login(password);
   };
+
+  const storedPseudo = localStorage.getItem("pseudo");
 
   const handleRegisterSuccess = () => {
     setIsRegistered(true);
@@ -28,7 +28,7 @@ export default function App() {
       {isLoggedIn && <Logout />}
       <div className="authentification">
         <div className="register">
-          {!isRegistered && (
+          {!isRegistered && !isLoggedIn && (
             <Register onRegisterSuccess={handleRegisterSuccess} />
           )}
         </div>
@@ -42,11 +42,12 @@ export default function App() {
       {!isLoggedIn && <p className="disconnected">Vous êtes déconnecté !</p>}
       {isLoggedIn && (
         <div className="login">
-          <h3>{"Bonjour " + {}}</h3>
+          <h3>Bonjour </h3>
+          <h2>{storedPseudo}</h2>
         </div>
       )}
-      <NewPost userId={userId} />
-      <ReadPosts userId={userId} />
+      {isLoggedIn && <NewPost pseudo={storedPseudo} />}
+      <ReadPosts pseudo={storedPseudo} />
     </div>
   );
 }
