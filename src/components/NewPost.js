@@ -1,11 +1,32 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function NewPost({ pseudo }) {
   const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    if (errorMessage) {
+      setIsVisible(true);
+
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+      }, 5000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [errorMessage]);
 
   const handleForm = (e) => {
     e.preventDefault();
+
+    if (message.trim() === "") {
+      setErrorMessage("Impossible d'envoyer un champ vide !");
+      return;
+    }
 
     axios.post(
       `${process.env.REACT_APP_API_URL}/post/`,
@@ -28,6 +49,9 @@ export default function NewPost({ pseudo }) {
         value={message}
       ></textarea>
       <input type="submit" value="Envoyer" />
+      {errorMessage && isVisible && (
+        <p className="error-message">{errorMessage}</p>
+      )}
     </form>
   );
 }
