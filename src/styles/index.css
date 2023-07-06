@@ -84,10 +84,25 @@ h1 {
   width: 100%;
 }
 
+@media screen and (max-width: 497px) {
+  .register-content input,
+  .login-content input {
+    width: 85%;
+  }
+}
+
 .register-content form,
 .login-content form {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 497px) {
+  .register-content form,
+  .login-content form {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .register-content button,
@@ -100,6 +115,13 @@ h1 {
   padding: 5px;
   cursor: pointer;
   margin-bottom: 15px;
+}
+
+@media screen and (max-width: 497px) {
+  .register-content button,
+  .login-content button {
+    width: 85%;
+  }
 }
 
 .register-content button:hover,

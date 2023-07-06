@@ -22,6 +22,18 @@ export const LogContextProvider = (props) => {
     }
   }, []);
 
+  // Récupérer à nouveau la valeur du pseudo lorsque le composant se rend
+  const storedPseudo = localStorage.getItem("pseudo");
+
+  useEffect(() => {
+    if (storedPseudo && storedPseudo !== pseudo) {
+      setPseudo(storedPseudo);
+    }
+  }, [storedPseudo, pseudo]);
+
+  console.log("***pseudo***");
+  console.log(pseudo);
+
   // Fonction pour mettre à jour le pseudo dans le state
   const loginHandler = (pseudo) => {
     setPseudo(pseudo);
@@ -43,6 +55,9 @@ export const LogContextProvider = (props) => {
     login: loginHandler,
     logout: logOutHandler,
   };
+
+  console.log("***contextValue***");
+  console.log(contextValue);
 
   return (
     <LogContext.Provider value={contextValue}>
